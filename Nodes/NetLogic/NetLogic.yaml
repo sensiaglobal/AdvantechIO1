@@ -1,0 +1,27 @@
+Name: NetLogic
+Type: FolderType
+Children:
+- Name: AdvantechIOLogic
+  Id: g=1e88d8506fad1d3b2599a39def945a48
+  Type: NetLogic
+  Children:
+  - Class: Method
+    Name: Scan
+  - Name: ScanPeriod
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 1000
+  - Name: ReportPeriod
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 1000
+  - Class: Method
+    Name: SwitchChanged
+    Children:
+    - Name: ns=0;InputArguments
+      Type: BaseVariableType
+      DataType: Argument
+      ReferenceType: HasProperty
+      ValueRank: OneDimension
+      ArrayDimensions: [0]
+      Value: [{"TypeId":{"Id":296},"Body":{"Name":"swNodeId","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"modNodeId","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "AdvantechIO1/1.0.0": {
+        "runtime": {
+          "AdvantechIO1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AdvantechIO1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

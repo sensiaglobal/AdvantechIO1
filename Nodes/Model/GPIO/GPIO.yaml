@@ -1,0 +1,5 @@
+Name: GPIO
+Type: FolderType
+Children:
+- File: DI/DI.yaml
+- File: DO/DO.yaml

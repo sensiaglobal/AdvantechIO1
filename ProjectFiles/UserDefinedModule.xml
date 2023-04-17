@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module version="1">
+    <Name>AdvantechIO1UserDefinedModule</Name>
+    <Company></Company>
+    <Version>0.0.0</Version>
+    <MinUpgradableVersion>0.0.0</MinUpgradableVersion>
+    <Binding name="Net" />
+
+    <Namespaces/>
+
+    <Dependencies>
+        <Core version="0.0.0" />
+        <Binding version="0.0.0" />
+        <Module name="FTOptix.HMIProject.Net" version="0.0.0" />
+    </Dependencies>
+
+    <Nodes/>
+
+    <TypeMappings>
+        <TypeMapping>
+            <TargetType>
+                <NodeId namespaceUri="AdvantechIO1" guid="8e4a7d4f759f53cb5319eb610f4019b7" />
+            </TargetType>
+        </TypeMapping>
+        <TypeMapping>
+            <TargetType>
+                <NodeId namespaceUri="AdvantechIO1" guid="5857a64731e682055a90185ada2f1c15" />
+            </TargetType>
+        </TypeMapping>
+        <TypeMapping>
+            <TargetType>
+                <NodeId namespaceUri="AdvantechIO1" guid="3eadafffd581aa2f97e40623d38094b9" />
+            </TargetType>
+        </TypeMapping>
+    </TypeMappings>
+</Module>

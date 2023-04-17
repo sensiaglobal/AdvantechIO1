@@ -1,0 +1,43 @@
+Name: DO
+Type: FolderType
+Children:
+- Name: DO00
+  Id: g=8691dd359940683078c311f28afb7768
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO01
+  Id: g=af65078a2f5a11fe5cf1c98198b06191
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO02
+  Id: g=d76e9ffb04862a171dffcf05ac8ce15b
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO03
+  Id: g=74084b045f80ecca68198e332546591e
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO04
+  Id: g=c88bbc595ddc3f555bc7c5dd8ebe3640
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO05
+  Id: g=3d0e0b5b5be0e1bda70a74170aa55925
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO06
+  Id: g=192694b8798e4e950abe978816c1df99
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false
+- Name: DO07
+  Id: g=d78aaa0c24e97a5a9ccbcc31c4c455f1
+  Type: BaseDataVariableType
+  DataType: Boolean
+  Value: false

@@ -1,0 +1,12 @@
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\bin\AdvantechIO1.deps.json
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\bin\AdvantechIO1.dll
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\bin\AdvantechIO1.pdb
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.csproj.AssemblyReference.cache
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.GeneratedMSBuildEditorConfig.editorconfig
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.AssemblyInfoInputs.cache
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.AssemblyInfo.cs
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.csproj.CoreCompileInputs.cache
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.dll
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\refint\AdvantechIO1.dll
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\AdvantechIO1.pdb
+C:\FTOptix\Projects\AdvantechIO1\ProjectFiles\NetSolution\obj\Debug\ref\AdvantechIO1.dll
