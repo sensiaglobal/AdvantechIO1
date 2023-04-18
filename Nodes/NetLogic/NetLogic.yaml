@@ -10,11 +10,11 @@ Children:
   - Name: ScanPeriod
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 1000
+    Value: 200
   - Name: ReportPeriod
     Type: BaseDataVariableType
     DataType: Int32
-    Value: 1000
+    Value: 200
   - Class: Method
     Name: SwitchChanged
     Children:

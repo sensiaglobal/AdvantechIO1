@@ -59,13 +59,13 @@ public class UIUpdate
     private void UpdateUI()
     {
         //
-        // Get scanDB
+        // Update Discrete 
         //
         foreach (DiscreteIOInfo dio in eapi.discreteIOsList)
         {
             string diName = "";
-            Log.Info("Num: " + dio.num.ToString() + " Bit Position: " + dio.bitPosition.ToString() + " Iotype: " + dio.ioType.ToString() + 
-             "value: " + dio.value.ToString());
+            //Log.Info("Num: " + dio.num.ToString() + " Bit Position: " + dio.bitPosition.ToString() + " Iotype: " + dio.ioType.ToString() + 
+            // "value: " + dio.value.ToString());
             if (dio.ioType == IoType.dInput)
             {
                 diName = cfg.modelDigitalInputsStr;
@@ -80,7 +80,17 @@ public class UIUpdate
                 fn.UpdateVariableModelValue(fullName, dio.value.ToString());
             }
         }
+        //
+        // Update Analogs
+        //
+        foreach (AnalogMeasInfo ami in eapi.measurementsList)
+        {
+            string aiName = cfg.modelMeasurementsStr;
+            string fullName = string.Format(aiName, ami.modelName);
+            fn.UpdateVariableModelValue(fullName, ami.value.ToString());
+        }
     }
+
     public void ProcessSwitch(IUAObject logicObject, NodeId swNodeId, NodeId modelNodeId)
     {
         // Get the switch object

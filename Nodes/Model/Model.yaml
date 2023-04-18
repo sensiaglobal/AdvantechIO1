@@ -2,3 +2,4 @@ Name: Model
 Type: FolderType
 Children:
 - File: GPIO/GPIO.yaml
+- File: MEAS/MEAS.yaml

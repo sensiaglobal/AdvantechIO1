@@ -10,6 +10,7 @@ using FTOptix.Core;
 using FTOptix.CoreBase;
 using FTOptix.NetLogic;
 using EAPI;
+using System.Collections.Generic;
 
 #endregion
 
@@ -27,6 +28,7 @@ public class AdvantechIOLogic : BaseNetLogic
         eapi = new Eapi(cfg);
         report = new UIUpdate(cfg, eapi);
         eapi.LoadAll();
+        Scan(); // start scanning
     }
 
     public override void Stop()
@@ -77,4 +79,5 @@ public class AdvantechIOLogic : BaseNetLogic
     {
         report.ProcessSwitch(LogicObject, swNodeId, modNodeId);
     }
+
 }

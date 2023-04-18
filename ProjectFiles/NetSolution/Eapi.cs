@@ -15,17 +15,21 @@ namespace EAPI
 {
     public class Eapi 
     {
+        private Config cfg;
         private PeriodicTask IOScan;
         private PeriodicTask ModelUpdate;
         private Mutex eapiDBMutex;
         public bool IsInitialized;
         public List<GPIOInfo> gpioInfoList;
         public List<DiscreteIOInfo> discreteIOsList;
+        public List<AnalogMeasInfo> measurementsList;
         
         public Eapi (Config cfg){
+            this.cfg = cfg;
             this.IsInitialized = false;
             this.gpioInfoList = new List<GPIOInfo>();
             this.discreteIOsList = new List<DiscreteIOInfo>();
+            this.measurementsList = new List<AnalogMeasInfo>();
             this.eapiDBMutex = new Mutex(false, cfg.mutexName);
         }
 
@@ -50,6 +54,7 @@ namespace EAPI
             // I got the mutex. Do the Scan
             //
             GPIOPinRefresh();
+            GetMeasurements();
             //
             // Return mutex
             //
@@ -66,11 +71,9 @@ namespace EAPI
         public void LoadAll()
         {
             //Initialize
-            this.gpioInfoList = new List<GPIOInfo>();
-            this.discreteIOsList = new List<DiscreteIOInfo>();
             LibInitialize();
             LoadGPIO();
-            //LoadHWMonitor();
+            LoadHWMonitor();
             //LoadLED();
             //LoadRedundantPowerStatus();
             //LoadAuxIO();
@@ -238,6 +241,11 @@ namespace EAPI
             return true;
         }
 
+        private bool LoadHWMonitor()
+        {
+            LoadMeasurementInfo();
+            return true;
+        }
         private void LoadDiscreteIOInfo()
         {
             //
@@ -247,6 +255,7 @@ namespace EAPI
             {
                 int di_count = 0;
                 int do_count = 0;
+
                 for (int i=0; i<gi.supPinNum; i++)
                 {
                     DiscreteIOInfo dIOInfo = new DiscreteIOInfo();
@@ -275,6 +284,32 @@ namespace EAPI
                 }
             }
         }
+
+        public void LoadMeasurementInfo()
+        {
+            int num = 0;
+            foreach (string meas in HWMonitor.MeasurementsStrArray)
+            {
+                AnalogMeasInfo ami = new AnalogMeasInfo();
+                ami.num = num;
+                switch (meas)
+                { 
+                    case ("Temp.System"):
+                        ami.measType = HWMonitor.BoardTemp.System;
+                        break;
+                    case ("Temp.CPU"):
+                        ami.measType = HWMonitor.BoardTemp.CPU;
+                        break;
+                    default:
+                        ami.measType = HWMonitor.BoardTemp.Unknown; 
+                        break;
+                }
+                ami.modelName = cfg.measModelNameStr[num];
+                ami.value = 0.0f;
+                measurementsList.Add(ami);
+                num++;
+            }    
+        }
         public void GPIOPinRefresh()
         {
             foreach (DiscreteIOInfo dio in discreteIOsList)
@@ -285,12 +320,70 @@ namespace EAPI
                     GetLevel((byte)dio.bitPosition, (uint)dio.idType, ref val);
                     dio.value = val;
                 }
-                //else if (dio.ioType == IoType.dOutput)
-                //{
-                    //SetLevel((byte)dio.bitPosition, dio.value.ToString(), (uint)dio.idType);
-                //}
+            }
+        }
+
+        private bool BoardGetValue(uint Id, ref uint value)
+        {
+            bool ret = false;
+            uint status = Constants.EAPI_STATUS_ERROR;
+            try
+            {
+                status = MethodClass.NativeMethods.EApiBoardGetValue(Id, ref value);
+                if (status == Constants.EAPI_STATUS_SUCCESS)
+                {
+                    ret = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(string.Format("{0}status: {2}", ex.Message, status));
+            }
+            return ret;
+        }
+
+        public List<float> GetHWMonValues(int[] pHWMonIndexArray, int maxItem, uint baseId, int funcId)
+        {
+            List<float> rtn = new List<float>();
+            uint Id = 0;
+            if (pHWMonIndexArray == null)
+            {
+                return rtn;
+            }
+            
+            if (pHWMonIndexArray[0] == Constants.UNDEFINED)
+            {
+                return rtn;
             }
 
+            for (int i = 0; i < maxItem && pHWMonIndexArray[i] > -1; i++)
+            {
+                uint value = 0;
+                Id = baseId + (uint)pHWMonIndexArray[i];
+                if (BoardGetValue(Id, ref value))
+                {
+                    float fval = HWMonitor.EAPI_DECODE_CELCIUS(Convert.ToSingle(value));
+                    rtn.Add(fval);
+                }
+            }
+            return rtn;
+        }
+
+        public void GetMeasurements()
+        {
+            //
+            // Get temp measurements
+            //
+            int[] temps = {(int)HWMonitor.BoardTemp.CPU, (int)HWMonitor.BoardTemp.System};
+            foreach (AnalogMeasInfo ami in measurementsList)
+            {
+                int[] meas = {(int)ami.measType};
+                List<float> measurements = GetHWMonValues(meas, meas.Length, HWMonitor.EAPI_ID_HWMON_TEMP_BASE, (int)HWMonitor.FunctionIndex.funcTemperature);
+                //
+                // Store into DB
+                //
+                ami.value = measurements[0];
+            }
         }
     }
 }

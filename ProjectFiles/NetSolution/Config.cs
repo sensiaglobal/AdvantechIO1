@@ -7,6 +7,8 @@ public class Config
     //
     public readonly string modelDigitalInputsStr = "Model/GPIO/DI/DI{0}";
     public readonly string modelDigitalOutputsStr = "Model/GPIO/DO/DO{0}";
+    public readonly string modelMeasurementsStr = "Model/MEAS/{0}";
+    public readonly string[] measModelNameStr = {"CPUTemp", "SystemTemp"};
     // 
     /// UI Configuration
     //
@@ -25,8 +27,8 @@ public class Config
     //
     public readonly string ScanPollPeriodStr = "ScanPeriod";
     public readonly string ReportPeriodStr = "ReportPeriod";
-    public readonly int MinimumScanPollPeriod = 1000;
-    public readonly int MinimumReportPeriod = 1000;
+    public readonly int MinimumScanPollPeriod = 100;
+    public readonly int MinimumReportPeriod = 100;
     public IUAVariable ScanPeriodVariable;
     public IUAVariable ReportPeriodVariable;
     public void ReadConfigurationVariables(IUAObject logicObject)

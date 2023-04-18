@@ -178,7 +178,7 @@ namespace EAPI
         public static byte PinNumber = 0;
     }
 
-    internal class HWMonitor
+    public class HWMonitor
     {
         public const int EAPI_ID_HWMON_TEMP_MAX = 10;
         public const int EAPI_ID_HWMON_TEMP_BASE = 0x00050000;
@@ -296,6 +296,18 @@ namespace EAPI
         public static int[] current = new int[EAPI_ID_HWMON_CURRENT_MAX];
         public static int[] power = new int[EAPI_ID_HWMON_POWER_MAX];
         public static int[] functions = new int[(int)FunctionIndex.MaxFunction];
+        // 
+        // Added by MT 
+        //
+        public static readonly string[] MeasurementsStrArray = {"Temp.CPU", "Temp.System"};
+        public enum BoardTemp
+    {
+        Unknown = -1,
+        CPU = 0,
+        System = 2
+
+    };
+    
     }
 
     internal class LED

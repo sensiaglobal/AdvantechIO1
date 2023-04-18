@@ -1,0 +1,13 @@
+Name: MEAS
+Type: FolderType
+Children:
+- Name: SystemTemp
+  Id: g=f021a347853089c9cc9b176d9c89532b
+  Type: BaseDataVariableType
+  DataType: Float
+  Value: 0.0
+- Name: CPUTemp
+  Id: g=46fef3e04400c6daede80b099630abf9
+  Type: BaseDataVariableType
+  DataType: Float
+  Value: 0.0
