@@ -93,6 +93,16 @@ public class OptixMiscFunctions
         return variable.Value;
     }
 
+public IUAVariable GetVariableModel(string varName)
+    {
+        IUAVariable variable = Project.Current.GetVariable(varName);
+        if (variable == null) 
+        {
+            throw new Exception("GetVariableModelValue() - Model Variable "  + varName + " not found.");
+        }
+        return variable;
+    }
+
     public UAValue GetVariableModelValue(string varName)
     {
         IUAVariable variable = Project.Current.GetVariable(varName);

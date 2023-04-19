@@ -80,4 +80,12 @@ public class AdvantechIOLogic : BaseNetLogic
         report.ProcessSwitch(LogicObject, swNodeId, modNodeId);
     }
 
+
+
+
+    [ExportMethod]
+    public void PeriodicDOToggle_Changed(NodeId swNodeId, NodeId modNodeId)
+    {
+        report.DOutputDemo(LogicObject, swNodeId, modNodeId);
+    }
 }
